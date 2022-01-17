@@ -1,0 +1,22 @@
+﻿@model List<TemplateViewModel>
+<div class="table-responsive">
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+                <th>م</th>
+                <th>اسم</th>
+                <th>تحميل</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var d in Model)
+            {
+                <tr>
+                    <td>@d.Id</td>
+                    <td>@d.Name</td>
+                    <td><a href="~/TemplateImage/@d.PhotoString" download="@d.PhotoString">تحميل</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

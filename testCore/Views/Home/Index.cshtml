@@ -1,0 +1,52 @@
+﻿@model TemplateViewModel
+<main id="main-container" class="slim-scroll smooth" style="min-height: 836px;padding-top: 0px;">
+    <div class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="bg-image overflow-hidden page-header-img block block-rounded" style="height: 150px;background-image: url( @Url.Content("~/images/baner1_ar.jpg") )">
+                    <div class="bg-black-op">
+                        <div class="content content-narrow">
+                            <div class="block block-transparent no-border">
+                                <div class="block-content block-content-full">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content remove-padding-t">
+        <div class="block">
+            <div class="block-header" style="border-bottom: 1px solid #e8e8e8;">
+                <h3 class="block-title remove-margin">الخدمات</h3>
+            </div>
+            <div class="block-content">
+                <div class="row">
+                    <div class="col-md-6">
+                        <a href="@Url.Action("Index","Template")" class="block r-shape">
+                            <div class="block-content block-content-full">
+                                <div class="row">
+                                    <div class="col-xs-9">
+                                        <div class="font-w700 h5 push-5-t">
+                                            اضافة معلومات جديدة
+                                        </div>
+                                        <p class="h6 font-w400 text-gray-dark remove-margin">الدخول الى الخدمة ...</p>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <span class="item item-circle bg-custom-light text-custom pull-right"><i class="si si-doc"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-12">
+                        <div id="divTemplate">
+                            @await Component.InvokeAsync("TemplateRequest")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

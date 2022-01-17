@@ -1,0 +1,53 @@
+﻿@model List<TemplateViewModel>
+<div class="table-responsive">
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+                <th>م</th>
+                <th>اسم</th>
+                <th>تحميل</th>
+                <th>تعديل</th>
+                <th>حذف</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var d in Model)
+            {
+                <tr>
+                    <td>@d.Id</td>
+                    <td>@d.Name</td>
+                    <td><a href="~/TemplateImage/@d.PhotoString" download="@d.PhotoString">تحميل</a></td>
+                    <td>
+                        <a asp-action="ShowTemplate" asp-controller="Template" asp-route-id="@d.Id"
+                           data-ajax="true"
+                           data-ajax-method="POST"
+                           data-ajax-mode="replace"
+                           data-ajax-update="#divTemplateForm"
+                           class="btn btn-info">تعديل </a>
+                    </td>
+                    <td>
+                        <a href="#gvTable" class="btn btn-danger" onclick="DeleteRow(@d.Id)">حذف</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<script>
+    function DeleteRow(id) {
+        Swal.fire({
+            title: 'هل انت متأكد من الحذف ',
+            text: "بعد الحذف لايمكنك التراجع!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'نعم, احذفه الان',
+            cancelButtonText: 'الغاء',
+        }).then((result) => {
+            if (result.value) {
+                $("#divTemplate").load('@Url.Action("DeleteTemplate", "Template")?id=' + id);
+            }
+        });
+    }
+</script>

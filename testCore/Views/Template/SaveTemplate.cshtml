@@ -1,0 +1,58 @@
+﻿@model TemplateViewModel
+
+<script type="text/javascript">
+    function ShowTemplateMsg() {
+        var msg = '@ViewBag.TemplateMsg';
+        if (msg == "success") {
+            Swal.fire(
+                'تم الحفظ بنجاح',
+                '',
+                'success'
+            );
+            $("#divTemplate").load('@Url.Action("GetTemplate", "Template")');
+            document.getElementById("_clear").click();
+        }
+    }
+    function FailureFunction() {
+        alert("حدث خطأ! حاول مرة اخرى في وقت لاحق");
+    }
+</script>
+
+<form asp-action="SaveTemplate" asp-controller="Template" method="post" enctype="multipart/form-data"
+      data-ajax="true"
+      data-ajax-method="POST"
+      data-ajax-mode="replace"
+      data-ajax-update="#divTemplateForm"
+      data-ajax-success="ShowTemplateMsg"
+      data-ajax-failure="FailureFunction">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Name">الاسم</label>
+                <input asp-for="Name" type="text" class="form-control">
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Photo">الصورة</label>
+                <input asp-for="Photo" type="file" class="form-control">
+                <span asp-validation-for="Photo" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-12" style="text-align: left;">
+            <button type="submit" class="btn btn-primary btn-search">حفظ </button>
+            <a asp-action="NewTemplate" asp-controller="Template" id="_clear"
+               data-ajax="true"
+               data-ajax-method="POST"
+               data-ajax-mode="replace"
+               data-ajax-update="#divTemplateForm"
+               class="btn btn-outline-secondary">حذف المدخلات </a>
+        </div>
+    </div>
+</form>

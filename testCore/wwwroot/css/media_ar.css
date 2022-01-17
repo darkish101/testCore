@@ -1,0 +1,45 @@
+﻿
+/*------  Responsive --------------------------------------*/
+/* Laptop */
+@media only screen and (max-width: 1036px) {
+}
+
+/* Tablet */
+@media only screen and (max-width: 756px) {
+}
+
+/* Mobile */
+@media only screen and (max-width: 540px) {
+    .p-heading {
+        padding: 0;
+    }
+    .breadcrumb > li.page-name {
+        display: block;
+        margin-bottom: 5px;
+    }
+    .breadcrumb > li.d-i::before,
+    .p-heading p {
+        display: none;
+    }
+    .copyright {
+        text-align: center;
+    }
+    .tab-pane button {
+        float: none !important;
+        margin: 0 auto;
+        display: block;
+    }
+    .page-header-img .block-content.block-content-full {
+        padding: 20px 0;
+    }
+    .block > .nav-tabs > li {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Small Mobile */
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+  
+}
